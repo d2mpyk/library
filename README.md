@@ -25,7 +25,7 @@ Para mayor referencia, considere las siguientes secciones:
 * [Spring Boot ](https://spring.io/projects/spring-boot)
 * [Official API Gutendex documentation](https://gutendex.com/)
 
-![Gutendex](https://github.com/d2mpyk/library/assets/gutendex.png)
+![Gutendex](assets/gutendex.png)
 
 ### Realizado con:
 ![Notebook](https://img.shields.io/badge/Intel-Core_i7_12th-0071C5?style=for-the-badge&logo=intel&logoColor=white)
