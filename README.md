@@ -25,12 +25,11 @@ Para mayor referencia, considere las siguientes secciones:
 * [Spring Boot ](https://spring.io/projects/spring-boot)
 * [Official API Gutendex documentation](https://gutendex.com/)
 
-![Gutendex](https://github.com/d2mpyk/library/src/main/resources/images/gutendex.png)
 
 ### Realizado con:
 ![Notebook](https://img.shields.io/badge/Intel-Core_i7_12th-0071C5?style=for-the-badge&logo=intel&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![InteliJ](https://img.shields.io/badge/InteliJ-white.svg?style=for-the-badge)
+![InteliJ](https://img.shields.io/static/v1?label=Intellij%20idea&labelColor=black&style=for-the-badge&logo=intellijidea&logoColor=white&message=IDE)
 
 ### Status del Repositorio:
 ![Watchers](https://img.shields.io/github/watchers/d2mpyk/library.svg?style=for-the-badge)
