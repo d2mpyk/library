@@ -149,14 +149,27 @@ public class Control {
     private void listarTodosLosLibros(){
         System.out.println(STR."\{separador}|                \uD83D\uDCDA Imprimiendo la lista de los libros \uD83D\uDCDA\n\{separador}");
         List<Book> books = bookRepository.findAll();
-        books.stream().sorted(Comparator.comparing(Book::getNumeroDeDescargas).reversed()).forEach(System.out::println);
+        if(!books.isEmpty()){
+            books.stream().sorted(Comparator.comparing(Book::getNumeroDeDescargas).reversed()).
+                    forEach(l -> System.out.println(separador+
+                            "| \uD83D\uDCD6 Titulo:      "+l.getTitulo()+"\n"+
+                            "| \uD83E\uDDD1\u200D\uD83D\uDCBB Autor:       "+l.getAutor()+"\n"+
+                            "| \uD83D\uDDBC\uFE0F Imagen:      "+l.getImagen()+"\n"+
+                            "| \uD83D\uDD17 Version Web: "+l.getOnline()+"\n"+
+                            separador));
+        } else System.out.println(STR."\{separador}| *** No se encontraron libros que mostrar ***\n\{separador}");
     }
     private void listarTodosLosAutores(){
         System.out.println(STR."\{separador}|                   \uD83E\uDDD1\u200D\uD83D\uDCBB Listando todos los autores \uD83E\uDDD1\u200D\uD83D\uDCBB \n\{separador}");
         List<Person> autores = personRepository.findAll();
-        autores.stream().filter(distinctByKey(Person::getNombre))
-                .sorted(Comparator.comparing(Person::getNombre))
-                .forEach(a ->System.out.println(separador+"| "+a+"\n"+separador));
+        if(!autores.isEmpty()){
+            System.out.print(separador);
+            autores.stream().filter(distinctByKey(Person::getNombre))
+                    .sorted(Comparator.comparing(Person::getNombre))
+                    .forEach(l -> System.out.println("| "+l));
+            System.out.println(separador);
+        } else System.out.println(STR."\{separador}| *** No se encontraron autores que mostrar ***\n\{separador}");
+
     }
     private void listarAutoresPorAnio(){
         int anioBuscado = 0;
@@ -167,11 +180,16 @@ public class Control {
             try{
                 anioBuscado = Integer.parseInt(System.console().readLine());
                 List<Person> autores = personRepository.findByNacimientoLessThanEqualAndFallecimientoGreaterThanEqual(anioBuscado, anioBuscado);
-                if(!autores.isEmpty()) autores.stream().filter(distinctByKey(Person::getNombre)).forEach(a ->System.out.println(separador+"| "+a+"\n"+separador));
-                else System.out.println(STR."\{separador}| *** No se encontraron autores vivos en ese año ***\n\{separador}");
+                if(!autores.isEmpty()) {
+                    System.out.print(separador);
+                    autores.stream().filter(distinctByKey(Person::getNombre))
+                            .forEach(l -> System.out.println("| "+l));
+                    System.out.println(separador);
+                }
+                else System.out.print(STR."\{separador}| *** No se encontraron autores vivos en ese año ***\n\{separador}");
                 break;
             } catch (NumberFormatException | InputMismatchException e){
-                System.out.println(STR."\{separador}| *** Opción incorrecta, Por favor intente de nuevo ***\n\{separador}");
+                System.out.print(STR."\{separador}| *** Opción incorrecta, Por favor intente de nuevo ***\n\{separador}");
                 break;
             }
         }
@@ -181,7 +199,12 @@ public class Control {
         System.out.print("| Escribe el nombre del autor que deseas buscar: ");
         var nombre = teclado.nextLine();
         List<Person> autores = personRepository.findByNombreContainingIgnoreCase(nombre);
-        if(!autores.isEmpty()) autores.stream().filter(distinctByKey(Person::getNombre)).forEach(a ->System.out.println(separador+"| "+a+"\n"+separador));
+        if(!autores.isEmpty()) {
+            System.out.print(separador);
+            autores.stream().filter(distinctByKey(Person::getNombre))
+                    .forEach(l -> System.out.println("| "+l));
+            System.out.println(separador);
+        }
         else System.out.println(STR."\{separador}| *** No se encontraron autores con el nombre: \{nombre} ***\n\{separador}");
     }
     private void listarLibrosPorIdioma(){
@@ -299,7 +322,15 @@ public class Control {
             }
 
             List<Book> libros = bookRepository.findByIdiomas(codigoIdioma);
-            if(!libros.isEmpty()) libros.forEach(System.out::println);
+            System.out.println(STR."\{separador}|       \uD83D\uDCDA Imprimiendo la lista de los libros con el idioma: \{codigoIdioma} \uD83D\uDCDA\n\{separador}");
+            if(!libros.isEmpty()) {
+                libros.forEach(l -> System.out.println(separador+
+                        "| \uD83D\uDCD6 Titulo:      "+l.getTitulo()+"\n"+
+                        "| \uD83E\uDDD1\u200D\uD83D\uDCBB Autor:       "+l.getAutor()+"\n"+
+                        "| \uD83D\uDDBC\uFE0F Imagen:      "+l.getImagen()+"\n"+
+                        "| \uD83D\uDD17 Version Web: "+l.getOnline()+"\n"+
+                        separador));
+            }
             else System.out.println(STR."\{separador}| *** No se encontraron libros con el idioma: \{codigoIdioma} ***\n\{separador}");
             break;
         }
@@ -307,20 +338,30 @@ public class Control {
     private void listarTop10LibrosDescargados(){
         System.out.println(STR."\{separador}|                   \uD83D\uDCDA Listando TOP 10 Libros \uD83D\uDCDA \n\{separador}");
         List<Book> top10Books = bookRepository.top10BooksDownloads();
-        if (!top10Books.isEmpty()) top10Books.forEach(System.out::println);
+        if (!top10Books.isEmpty()) {
+            top10Books.forEach(l -> System.out.println(separador+
+                    "| \uD83D\uDCD6 Titulo:      "+l.getTitulo()+"\n"+
+                    "| \uD83E\uDDD1\u200D\uD83D\uDCBB Autor:       "+l.getAutor()+"\n"+
+                    "| \uD83D\uDDBC\uFE0F Imagen:      "+l.getImagen()+"\n"+
+                    "| \uD83D\uDD17 Version Web: "+l.getOnline()+"\n"+
+                    "| \uD83E\uDC83  Descargas:   "+l.getNumeroDeDescargas()+"\n"+
+                    separador));
+        }
         else System.out.println(STR."\{separador}| *** No se encontraron libros con ese ranking ***\n\{separador}");
     }
     private void mostrarEstadisticas(){
-        System.out.print(STR."\{separador}|                   \uD83D\uDEA9 Imprimiendo Estadisticas \uD83D\uDEA9 \n\{separador}");
+        System.out.println(STR."\{separador}|                   \uD83D\uDEA9 Imprimiendo Estadisticas \uD83D\uDEA9 \n\{separador}");
         List<Book> libros = bookRepository.findAll();
-        DoubleSummaryStatistics est = libros.stream()
-                .collect(Collectors.summarizingDouble(Book::getNumeroDeDescargas));
-        System.out.printf("| Libros Totales:    %s\n",est.getCount());
-        System.out.printf("| Descargas Totales: %5.10s\n",est.getSum());
-        System.out.printf("| Menos Descargado:  %5.10s\n",est.getMin());
-        System.out.printf("| Mas Descargado:    %5.10s\n",est.getMax());
-        System.out.println(separador+"\n");
-
+        if(!libros.isEmpty()){
+            DoubleSummaryStatistics est = libros.stream()
+                    .collect(Collectors.summarizingDouble(Book::getNumeroDeDescargas));
+            System.out.printf(separador+
+                    "| · \uD83D\uDCDA Libros Totales:    %s\n"+
+                    "| · \uD83E\uDC83  Descargas Totales: %5.10s\n"+
+                    "| · \uD83D\uDCC9 Menos Descargado:  %5.10s\n"+
+                    "| · \uD83D\uDCC8 Mas Descargado:    %5.10s\n"+
+                    separador+"\n",est.getCount(),est.getSum(),est.getMin(),est.getMax());
+        } else System.out.println(STR."\{separador}| *** No hay estadisticas que mostrar ***\n\{separador}");
     }
 
     public static <T> Predicate<T> distinctByKey(
