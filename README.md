@@ -46,13 +46,13 @@ Para mayor referencia, considere las siguientes secciones:
 3. Abre la terminal y actualiza las dependencias con los siguientes comandos: 
    * `cd library`
    * `mvn install`
-3. Configura las credenciales de la API de Gutendex en el archivo de propiedades: 
+4. Crea la base de datos en [pgAdmin](https://www.pgadmin.org/download/), usando el comando:
+   * `CREATE DATABASE biblioteca;`
+5. Configura las credenciales de la API de Gutendex en el archivo de propiedades: 
    * `application.properties` 
    * `application.yml`
-4. Ejecuta la aplicación.
+6. Ejecuta la aplicación.
    * `mvn spring-boot:run`
-
-
 
 ## Créditos
 Este proyecto fue creado por Darwin Mireles.

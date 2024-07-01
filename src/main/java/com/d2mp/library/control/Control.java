@@ -5,7 +5,6 @@ import com.d2mp.library.repository.PersonRepository;
 import com.d2mp.library.service.*;
 import com.d2mp.library.model.*;
 
-import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -139,7 +138,10 @@ public class Control {
                 personRepository.save(person);
             }
             Long idBook = dataAPI.get().id();
-            bookRepository.findById(idBook);
+            if(bookRepository.findById(idBook).isEmpty()){
+                Book book = new Book(dataAPI.get());
+                bookRepository.save(book);
+            }
         } else {
             System.out.println(STR."\{separador}| *** No se encontró ningún registro con el titulo: \{titulo} ***\n\{separador}");
         }
@@ -183,7 +185,7 @@ public class Control {
         else System.out.println(STR."\{separador}| *** No se encontraron autores con el nombre: \{nombre} ***\n\{separador}");
     }
     private void listarLibrosPorIdioma(){
-        System.out.println(STR."\{separador}|                   \uD83C\uDF0E Listando libros por idioma \uD83C\uDF0E \n\{separador}");
+        System.out.print(STR."\{separador}|                   \uD83C\uDF0E Listando libros por idioma \uD83C\uDF0E \n\{separador}");
         int opcionIdioma = -1;
         String codigoIdioma = "";
         String menu = "| 1.-  \uD83C\uDDE6\uD83C\uDDEA Árabe \n"+
