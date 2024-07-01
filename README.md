@@ -2,8 +2,10 @@
 
 ### Descripción 
 Esta es una aplicación de consola que consume la api de Gutendex.
-Es una API web JSON para metadatos de libros electrónicos del Proyecto Gutenberg
-Esta aplicación realizada usando Spring Boot, Maven, Java y Postgres.
+
+Gutendex una API web JSON para metadatos de libros electrónicos del Proyecto Gutenberg
+
+Esta aplicación se realizadó usando Spring Boot, Maven, Java y Postgres.
 
 ### Agradecimientos a: 
 ![Oracle](https://img.shields.io/static/v1?label=Oracle&labelColor=white&style=for-the-badge&logo=Oracle&logoColor=red&message=ONE)
@@ -22,9 +24,8 @@ Para mayor referencia, considere las siguientes secciones:
 
 * [Spring Boot ](https://spring.io/projects/spring-boot)
 * [Official API Gutendex documentation](https://gutendex.com/)
-<p align="center">
-  <img src="https://github.com/d2mpyk/library/src/main/resources/images/gutendex.png"/>
-</p>
+
+![Gutendex](https://github.com/d2mpyk/library/src/main/resources/images/gutendex.png)
 
 ### Realizado con:
 ![Notebook](https://img.shields.io/badge/Intel-Core_i7_12th-0071C5?style=for-the-badge&logo=intel&logoColor=white)
@@ -49,11 +50,11 @@ Para mayor referencia, considere las siguientes secciones:
    * `application.properties` 
    * `application.yml`
 4. Ejecuta la aplicación.
+   * `mvn spring-boot:run`
 
 
 
 ## Créditos
-
 Este proyecto fue creado por Darwin Mireles.
 
 
