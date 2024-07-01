@@ -27,8 +27,12 @@ public class Person {
 
     public Person(DataPerson dataPerson){
         this.nombre = dataPerson.nombre();
-        this.nacimiento = Long.valueOf(dataPerson.nacimiento());
-        this.fallecimiento = Long.valueOf(dataPerson.fallecimiento());
+        if (dataPerson.nacimiento()==null){
+            this.nacimiento = 0L;
+        } else this.nacimiento = Long.valueOf(dataPerson.nacimiento());
+        if(dataPerson.fallecimiento()==null){
+            this.fallecimiento = 0L;
+        }else this.fallecimiento = Long.valueOf(dataPerson.fallecimiento());
     }
 
     public String getNombre() {

@@ -137,8 +137,8 @@ public class Control {
                 Person person = new Person(dataAPI.get().datosAutors().getFirst());
                 personRepository.save(person);
             }
-            Long idBook = dataAPI.get().id();
-            if(bookRepository.findById(idBook).isEmpty()){
+            String tituloBuscado = dataAPI.get().titulo();
+            if(bookRepository.searchByTitulo(tituloBuscado)==null){
                 Book book = new Book(dataAPI.get());
                 bookRepository.save(book);
             }

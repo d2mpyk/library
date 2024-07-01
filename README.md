@@ -54,6 +54,36 @@ Para mayor referencia, considere las siguientes secciones:
 6. Ejecuta la aplicación.
    * `mvn spring-boot:run`
 
+## Overview
+### Menú Principal
+![Menu Principal](assets/menu_principal.png)
+### Opción 1
+![Opcion 1](assets/opcion1.png)
+### Opción 2
+![Opcion 2](assets/opcion2.png)
+### Opción 3
+![Opcion 3](assets/opcion3.png)
+### Opción 4
+![Opcion 4](assets/opcion4.png)
+### Opción 5
+![Opcion 5](assets/opcion5.png)
+### Opción 6
+![Opcion 6_1](assets/opcion6_1.png)
+![Opcion 6_2](assets/opcion6_2.png)
+![Opcion 6_3](assets/opcion6_3.png)
+### Opción 7
+![Opcion 7](assets/opcion7.png)
+### Opción 8
+![Opcion 8](assets/opcion8.png)
+### Opción 9
+![Opcion 9](assets/opcion9.png)
+
+## Insignia obtenida
+   <img align="center" src="assets/badge-literalura.png" width="200" alt="badge-alura">
+
+## Licencia
+GNU General Public License v3.0
+
 ## Créditos
 Este proyecto fue creado por Darwin Mireles.
 
