@@ -48,7 +48,7 @@ Para mayor referencia, considere las siguientes secciones:
    * `mvn install`
 4. Crea la base de datos en [pgAdmin](https://www.pgadmin.org/download/), usando el comando:
    * `CREATE DATABASE biblioteca;`
-5. Configura las credenciales de la API de Gutendex en el archivo de propiedades: 
+5. Configura las credenciales para la base de datos en el archivo de propiedades: 
    * `application.properties` 
    * `application.yml`
 6. Ejecuta la aplicación.
